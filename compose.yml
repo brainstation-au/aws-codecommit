@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  sh:
+    # image: amazon/aws-cli:latest
+    build: .
+    volumes:
+      - $HOME/.aws:/root/.aws:ro
+      - $HOME/.gitconfig:/root/.gitconfig:ro
+      - .:/opt/code
+    working_dir: /opt/code
+    environment:
+      - AWS_DEFAULT_REGION=ap-southeast-2
+      - AWS_PROFILE=sandbox01
+    # entrypoint: []
+    command: sh
